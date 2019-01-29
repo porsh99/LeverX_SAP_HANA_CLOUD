@@ -179,5 +179,9 @@
 				}
 			]
 		}
+	},
+	"sap.platform.hcp": {
+		"uri": "HW2_1",
+		"_version": "1.1.0"
 	}
 }

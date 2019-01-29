@@ -1,5 +1,5 @@
 {
-	"welcomeFile": "webapp/test/testFLPServiceMOCServer.html",
+	"welcomeFile": "HW2_1/test/testFLPServiceMockServer.html",
 	"routes": [
 		{
 			"path": "/resources",
