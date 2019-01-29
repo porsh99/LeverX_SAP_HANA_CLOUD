@@ -1,0 +1,30 @@
+body
+{
+    background-color: rgb(45, 45, 45);
+    color: aliceblue;
+    font-family: 'Roboto Thin' ,sans-serif;
+    text-align: center;
+}
+.button 
+{
+    width: 40%;
+    font-size: 150%;
+    color: white;
+    border: 0px solid red;
+    background-color: black;
+    padding: 7px;
+    border-radius: 10px;
+}
+
+.button:hover
+{
+    background-color: orange;
+    color: rgb(45, 45, 45);
+}
+
+.buttons
+{
+    margin-top: 10px;
+}
+
+

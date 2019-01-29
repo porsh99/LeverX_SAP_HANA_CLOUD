@@ -1,0 +1,43 @@
+body
+{
+    background-color: rgb(45, 45, 45);
+    color: aliceblue;
+    text-align: center;
+}
+
+div
+{
+    width: 30vh;
+    height: 30vh;
+    margin: 15vh 0vh 0vh 15vh;
+    position: absolute;
+}
+
+#block1
+{
+    background-color: red;
+    margin-left: 35vw;
+    border: 3px solid red;
+    z-index: 1;
+}
+
+#block2
+{
+    background-color: green;
+    border: 3px solid green;
+    z-index: 3;
+    margin-left: 45vw;
+    margin-top: 25vh;
+}
+
+#block3
+{
+    background-color: blue;
+    border: 3px solid blue;
+    z-index: 2;
+    margin-left: 55vw;
+    margin-top: 35vh;
+}
+
+
+

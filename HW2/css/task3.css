@@ -1,0 +1,91 @@
+body
+{
+    background-color: rgb(45, 45, 45);
+    color: aliceblue;
+    font-family: 'Roboto Thin' ,sans-serif;
+    height: 100vh;
+}
+
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#header
+{
+    width: 90%;
+    height: 15%;
+    margin-left: 5%;
+    background-color: aliceblue;
+    border-radius: 10px;
+    margin-top: 1%;
+}
+
+#sidebar
+{
+    width: 10%;
+    height: 600px;
+    position: fixed;
+    right: 1%; 
+    top: 18%;
+    background: black; /* Цвет фона */ 
+    border-radius: 10px; 
+    background: rgba(255,255,255, 0.5); 
+}
+
+.button 
+{
+    width: 90%;
+    margin-left: 5%;
+    font-size: 80%;
+    color: white;
+    border: 0px solid red;
+    background-color: black;
+    padding: 7px;
+    border-radius: 10px;
+}
+
+.button:hover
+{
+    background-color: orange;
+    color: rgb(45, 45, 45);
+}
+
+.buttons
+{
+    margin-top: 10px; 
+}
+.content
+{
+    width: 90%;
+    height: 62%;
+    margin-left: 5%;
+    margin-top: 1%;
+    background: lightgrey;
+    border-radius: 10px;
+    text-align: center;
+    padding-top: 1%;
+    color: rgb(45, 45, 45);
+    
+}
+ol
+{
+    text-align: center;
+    list-style-position: inside;
+}
+#footer
+{
+    width: 90%;
+    height: 15%;
+    margin-left: 5%;
+    background: lightblue;
+    border-radius: 10px;
+    margin-top: 1%;
+}
+
+
+
+
+

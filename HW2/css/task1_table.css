@@ -1,0 +1,40 @@
+body
+{
+    background-color: rgb(45, 45, 45);
+    color: aliceblue;
+    font-family: 'Roboto Thin' ,sans-serif;
+    text-align: center;
+}
+
+
+table
+{
+    width: 100%; 
+    border-spacing: 1vw;
+    margin: -0.6vh 0 0vh 0;
+}
+
+#header tr
+{
+    background-color: orangered;
+    height: 10vh;
+}
+#top_part tr
+{
+    background-color: greenyellow;
+    height: 30vh;
+}
+
+#middle_part tr
+{
+    background-color: lightskyblue;
+    height: 26vh;
+}
+#bottom_part tr
+{
+    background-color: lightgray;
+    height: 18vh;
+}
+
+
+

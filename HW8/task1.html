@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HW8 task 1</title>
+    <link rel="stylesheet" type="text/css" href="css/task1.css">
+    <link rel="stylesheet" type="text/css" href="roboto/roboto.css">
+    <script src="js/task1.js"></script>
+    <script src="js/jquery-3.3.1.js"></script>
+</head>
+
+<body onload="start()">
+    <table id="table-data">
+        <caption>Airlines</caption>
+        <tr class="tr_header">
+            <th>AirlineCode</th>
+            <th>Name</th>
+        </tr>
+    </table>
+    <div id="request-menu">
+        <div class="buttons">
+            <button class="button" type="submit" onclick="butGet()">
+                GET
+            </button>
+        </div>
+        <div class="buttons">
+            <button class="button" type="submit" onclick="butCount()">
+                COUNT
+            </button>
+        </div>
+        <div class="buttons">
+            <button class="button" type="submit" style="border: 1px solid red;" onclick="butExpand()">
+                EXPAND
+            </button>
+        </div>
+        <div class="buttons">
+            <button class="button" type="submit" onclick="butOrderBy()">
+                ORDERBY
+            </button>
+        </div>
+        <div class="buttons">
+            <button class="button" type="submit" onclick="butSearch()">
+                SEARCH
+            </button>
+        </div>
+        <div class="buttons">
+            <button class="button" type="submit" onclick="butSelect()">
+                SELECT
+            </button>
+        </div>
+        <div class="buttons">
+            <button class="button" type="submit" onclick="butSkip()">
+                SKIP
+            </button>
+        </div>
+        <div class="buttons">
+            <button class="button" type="submit" onclick="butTop()">
+                TOP
+            </button>
+        </div>
+        <div class="buttons">
+            <button class="button" type="submit" onclick="butFilter()">
+                3X FILTER
+            </button>
+        </div>
+    </div>
+</body>
+
+</html>

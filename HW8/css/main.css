@@ -1,0 +1,59 @@
+body
+{
+    background-color: rgb(45, 45, 45);
+    color: aliceblue;
+    font-family: 'Roboto Thin' ,sans-serif;
+    text-align: center;
+    height: 1920px;
+}
+
+.button 
+{
+    width: 40%;
+    font-size: 150%;
+    color: white;
+    border: 0px solid red;
+    background-color: black;
+    padding: 7px;
+    border-radius: 10px;
+}
+
+.button:hover
+{
+    background-color: orange;
+    color: black;
+}
+
+.digital_time
+{
+    position: fixed; /* Фиксированное положение */
+    right: 10px; /* Расстояние от правого края окна браузера */
+    top: 75%;
+    padding: 10px; /* Поля вокруг текста */ 
+    background: black; /* Цвет фона */ 
+    border-radius: 10px;
+    text-align: center;   
+}
+
+#digital_watch
+{
+    text-align: center;
+    font-size: 2rem;
+}
+#date
+{
+    font-size: 2rem;
+}
+#dayOfWeek
+{
+    font-size: 2rem; 
+}
+#text
+{
+    font-size: 2rem;
+}
+
+.buttons
+{
+    margin-top: 10px;
+}

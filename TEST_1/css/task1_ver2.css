@@ -1,0 +1,222 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto Thin', sans-serif;
+    height: 100%;
+    box-sizing: border-box;
+    background-color: white;
+    color: rgb(87, 87, 87);
+}
+
+.header-container {
+    
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    min-height: 100px;
+    width: 100%;
+
+    flex-wrap: wrap;
+    z-index: 1;
+
+    background: white;
+    box-shadow: 0px 3px rgba(0, 0, 0, 0.137);
+
+    position: fixed;
+    /* border: 1px solid red; */
+}
+
+.header-left-container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+
+    /* border: 1px solid orange; */
+}
+
+.header-left-container .box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* border: 1px solid green; */
+}
+
+.header-left-container .box img {
+    width: 55%;
+    /* border: 1px solid red; */
+}
+
+.header-left-container .box:first-child {
+    /* width: auto; */
+}
+
+.div-header-container {
+    border-left: 1px solid rgba(128, 128, 128, 0.219);
+    height: 55%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.div-header-container text {
+    padding-left: 10px;
+}
+
+button,
+input:last-child {
+    font-weight: bold;
+    font-size: 1.1em;
+    width: 4em;
+
+    border-radius: 15px;
+    border: 5px solid rgb(255, 255, 255);
+    background: white;
+
+    color: rgb(92, 0, 128);
+    margin-left: 2%;
+}
+
+button:hover,
+input:last-child:hover {
+    color: rgb(255, 255, 255);
+    background-color: rgb(92, 0, 128);
+    border-color: rgb(92, 0, 128);
+}
+
+/*ListBox styles*/
+
+.menu-content {
+    display: none;
+    position: absolute;
+    top: 30px;
+    background-color: white;
+    min-width: 600px;
+    z-index: 1;
+}
+
+.menu-content p {
+    padding: 5px;
+    font-size: 0.9em;
+    margin-bottom: 0.5em;
+}
+
+.menu-content p:hover {
+    color: rgb(84, 86, 212);
+}
+
+.div-menu {
+    position: relative;
+    display: flex;
+}
+
+.div-menu:hover .menu-content {
+    display: block;
+}
+
+/*End listBox styles*/
+
+.header-right-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0% 1% 0% 1%;
+
+    /* border: 1px solid red; */
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* border: 1px solid green; */
+}
+
+input:first-child {
+    background: grey;
+    border-width: 0px;
+    height: 35px;
+    width: 200px;
+    border-width: 0px;
+}
+
+input:last-child {
+    margin-left: 5%;
+}
+
+.content-container {
+    display: flex;
+    padding-top: 100px;
+
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+    /* border: 5px solid red; */
+
+}
+
+.card-container {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+
+    text-align: justify;
+
+    /* border: 5px solid blue; */
+
+    border-radius: 15px;
+}
+
+.card-container .box img {
+    width: 100%;
+}
+
+
+.card {
+    width: 450px;
+    margin-top: 20px;
+
+    color: white;
+    box-shadow: 10px 10px rgba(0, 0, 0, 0.062);
+    border-radius: 10px;
+}
+
+.card-header {
+    background-image: url("../img/business-support.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 300px;
+    padding: 1em;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+    opacity: 0.7;
+}
+
+.card-header-text {
+    font-size: 1.8em;
+    position: absolute;
+    width: 430px;
+    margin-left: 10px;
+    margin-top: -170px;
+}
+
+.card-desc {
+    background: grey;
+    font-size: 1.2em;
+    padding: 0.5em;
+}
+
+.card-footer {
+    width: 100%;
+    background: rgb(77, 77, 77);
+    text-align: center;
+    padding: 0.5em;
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+}

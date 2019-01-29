@@ -1,0 +1,13 @@
+{
+  "Products": [{
+      "FirstName": "first name 1",
+      "LastName": "last name 1",
+      "Gender": "male"
+    },
+    {
+      "FirstName": "first name 2",
+      "LastName": "last name 2",
+      "Gender": "female"
+    }
+  ]
+}

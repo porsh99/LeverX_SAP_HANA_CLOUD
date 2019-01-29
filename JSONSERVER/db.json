@@ -1,0 +1,74 @@
+{
+  "books": [
+    {
+      "id": "0",
+      "data": {
+        "name": "ASP.NET",
+        "science": "Web + C#",
+        "pagesCount": "768",
+        "publicher": "not found",
+        "hindingType": "light",
+        "avaliability": "for company employees",
+        "author": "123",
+        "onCD": true,
+        "onDVD": true
+      }
+    },
+    {
+      "id": "1",
+      "data": {
+        "name": "SAP HANA CLOUD",
+        "science": "Web + ABAP",
+        "pagesCount": "1343",
+        "publicher": "LeverX inc.",
+        "hindingType": "hard",
+        "avaliability": "for everyone",
+        "author": "Incognito",
+        "onCD": false,
+        "onDVD": false
+      }
+    },
+    {
+      "id": "2",
+      "data": {
+        "name": "test",
+        "science": "test",
+        "pagesCount": "test",
+        "publicher": "test",
+        "hindingType": "middle",
+        "avaliability": "123",
+        "author": "123",
+        "onCD": true,
+        "onDVD": true
+      }
+    },
+    {
+      "id": "3",
+      "data": {
+        "name": "dshgfsjhag",
+        "science": "hsdgfkjhsag",
+        "pagesCount": "dsjhfgdakjh",
+        "publicher": "dsajhfga",
+        "hindingType": "light",
+        "avaliability": "sdjfhg",
+        "author": "sdajhfg",
+        "onCD": true,
+        "onDVD": true
+      }
+    },
+    {
+      "id": "4",
+      "data": {
+        "name": "test",
+        "science": "test",
+        "pagesCount": "test",
+        "publicher": "test",
+        "hindingType": "hard",
+        "avaliability": "123",
+        "author": "123",
+        "onCD": true,
+        "onDVD": true
+      }
+    }
+  ]
+}

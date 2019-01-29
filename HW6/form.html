@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home work 6</title>
+    <link rel="stylesheet" type="text/css" href="css/form.css">
+    <link rel="stylesheet" type="text/css" href="roboto/roboto.css">
+    <script src="js/form.js"></script>
+</head>
+
+<body onload="Start()">
+    <div id="form-container">
+        <div>
+            <h1>Home work 6</h1>
+        </div>
+        <div class="div-form">
+            <form>
+                Name:
+                <input type="text" id="book_name" value=""><br>
+                Science:
+                <input type="text" id="book_science" value=""><br>
+                Count of pages:
+                <input type="text" id="book_count_of_pages" value=""><br>
+                Publisher name:
+                <input type="text" id="book_publisher_name" value=""><br>
+                Hinding type:
+                <p>Light &nbsp;<input name="hinding_type" type="radio" value="light"></p>
+                <p>Middle &nbsp;<input name="hinding_type" type="radio" value="middle"></p>
+                <p>Hard &nbsp;<input name="hinding_type" type="radio" value="hard"></p>
+                Avaliability:
+                <input type="text" id="book_avliability" value=""><br>
+                Author name:
+                <input type="text" id="book_author_name" value=""><br>
+                CD:
+                <input type="checkbox" id="book_on_cd"><br>
+                DVD:
+                <input type="checkbox" id="book_on_dvd" checked="checked"><br>
+                <input class="button" type="button" value="Update book" onclick="UpdateData()">
+                <input class="button" type="button" value="Back" onclick="GoBack()">
+            </form>
+        </div>
+
+    </div>
+</body>
+
+</html>

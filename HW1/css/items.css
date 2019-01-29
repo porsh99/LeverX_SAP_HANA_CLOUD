@@ -1,0 +1,64 @@
+body
+{
+    background-color: rgb(45, 45, 45);
+    color: aliceblue;
+    font-family: 'Roboto Thin' ,sans-serif;
+    text-align: center;
+    font-size: 120%;
+    width: 1000px;
+    margin: auto;
+    margin-top: 100px;
+}
+
+.button
+{
+    background: black;
+    color: aliceblue;
+    border-radius: 10px;
+    border: 1px solid orange;
+    margin: 0px;
+}
+
+button
+{
+    border-radius: 3px;
+    border: 0px solid red;
+    text-align: center;
+    font-family: 'Roboto Thin' ,sans-serif;
+    font-weight: bold;
+    background: black;
+    color: aliceblue;
+}
+
+button:hover
+{
+    background-color: orange;
+    color: rgb(45, 45, 45);
+    border: 1px solid aliceblue;
+}
+
+table
+{
+    border: 2px solid orange;
+    border-radius: 10px;
+    background-color: orange;
+}
+
+td
+{
+    background: rgb(45, 45, 45);
+}
+
+.tr_header
+{
+    color: rgb(45, 45, 45);
+}
+
+
+
+
+
+
+
+
+
