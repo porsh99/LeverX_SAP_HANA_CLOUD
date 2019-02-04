@@ -1,0 +1,14 @@
+npm WARN service@1.0.0 No description
+npm WARN service@1.0.0 No repository field.
+npm WARN service@1.0.0 No license field.
+
+audited 841 packages in 1.629s
+found 0 vulnerabilities
+
+
+┌────────────────────────────────────────────────────────────┐
+│                  npm update check failed                   │
+│            Try running with sudo or get access             │
+│            to the local update config store via            │
+│ sudo chown -R $USER:$(id -gn $USER) C:\Users\klado\.config │
+└────────────────────────────────────────────────────────────┘
