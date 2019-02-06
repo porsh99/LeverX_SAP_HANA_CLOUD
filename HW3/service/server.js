@@ -2,12 +2,14 @@
 "use strict";
 
 var xsjs  = require("@sap/xsjs");
+// var xsjs  = require("@sap/html");
 var xsenv = require("@sap/xsenv");
 var port  = process.env.PORT || 3000;
 
 var options = {
   	anonymous : true, // remove to authenticate calls
     redirectUrl : "/index.xsjs"
+    // redirectUrl : "/index.html"
 };
 
 // configure HANA

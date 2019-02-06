@@ -1,4 +1,4 @@
-service namespace "HiMTA"{
+service namespace "testApp3"{
 
     "testApp3::User" as "Users"
                 navigates("Users_2_Address" as "toAddress", "Users_2_Cars" as "toCars")
