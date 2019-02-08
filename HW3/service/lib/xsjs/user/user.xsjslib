@@ -39,25 +39,14 @@ var user = function (connection) {
       $.response.setBody(JSON.stringify(obj));
     };
 
-    // delete by JSON object.usid
-    this.doDelete = function (oUser) {
-        const statement = createPreparedDeleteStatement(USER_TABLE, oUser);
-        connection.executeUpdate(statement.sql, statement.aValues);
+    this.doDelete = function (usid) {
+            const statement = createPreparedDeleteStatement(USER_TABLE, {usid: usid});
+            connection.executeUpdate(statement.sql, statement.aValues);
 
-        connection.commit();
-        $.response.status = $.net.http.OK;
-        $.response.setBody(JSON.stringify({}));
-    };
-    // delete by int value of row ID
-    this.doDelete2 = function (rowID) {
-        const statement = createPreparedDeleteStatement2(USER_TABLE, rowID);
-        connection.executeUpdate(statement.sql, statement.aValues);
-
-        connection.commit();
-        $.response.status = $.net.http.OK;
-        $.response.setBody(JSON.stringify({}));
-    };
-
+            connection.commit();
+            $.response.status = $.net.http.OK;
+            $.response.setBody(JSON.stringify({}));
+        };
 
     function createPreparedInsertStatement(sTableName, oValueObject) {
       let oResult = {
@@ -65,7 +54,6 @@ var user = function (connection) {
             aValues: [],
             sql: "",
         };
-
         let sColumnList = '', sValueList = '';
 
         Object.keys(oValueObject).forEach(value => {
@@ -123,31 +111,29 @@ var user = function (connection) {
     };
 
     function createPreparedDeleteStatement(sTableName, oConditionObject) {
-          let oResult = {
-              aParams: [],
-              aValues: [],
-              sql: "",
-          };
+        let oResult = {
+            aParams: [],
+            aValues: [],
+            sql: "",
+        };
 
-          oResult.sql = `DELETE FROM "${sTableName}" WHERE "usid"=${oConditionObject.usid};`;
+        let sWhereClause = '';
+        for (let key in oConditionObject) {
+            sWhereClause += `"${key}"=? and `;
+            oResult.aValues.push(oConditionObject[key]);
+            oResult.aParams.push(key);
+        }
+        // Remove the last unnecessary AND
+        sWhereClause = sWhereClause.slice(0, -5);
+        if (sWhereClause.length > 0) {
+            sWhereClause = " where " + sWhereClause;
+        }
 
-          $.trace.error("sql to delete: " + oResult.sql);
-          return oResult;
-      };
+        oResult.sql = `delete from "${sTableName}" ${sWhereClause}`;
 
-    function createPreparedDeleteStatement2(sTableName, rowID) {
-            let oResult = {
-                aParams: [],
-                aValues: [],
-                sql: "",
-            };
-
-            oResult.sql = `DELETE FROM "${sTableName}" WHERE "usid"=${rowID};`;
-
-            $.trace.error("sql to delete: " + oResult.sql);
-            return oResult;
+        $.trace.error("sql to delete: " + oResult.sql);
+        return oResult;
     };
-
 
     function getNextval(sSeqName) {
         const statement = `select "${sSeqName}".NEXTVAL as "ID" from dummy`;

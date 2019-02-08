@@ -2,8 +2,8 @@ service namespace "testApp3"{
 
     "testApp3::User" as "Users"
                 navigates("Users_2_Address" as "toAddress", "Users_2_Cars" as "toCars")
-            create forbidden
-            update forbidden
+            create using "xsjs.user:usersCreate.xsjslib::usersCreate"
+            update using "xsjs.user:usersCreate.xsjslib::usersUpdate"
             delete forbidden;
 
     "testApp3::ExtraInfo.Address" as "Address"
