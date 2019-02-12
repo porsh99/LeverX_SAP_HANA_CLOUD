@@ -1,2 +1,4 @@
 .mta/
 node_modules
+*.mtar
+mta.jar

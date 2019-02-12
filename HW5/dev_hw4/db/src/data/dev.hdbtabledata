@@ -1,0 +1,50 @@
+{
+  "format_version": 1,
+  "imports": [
+    {
+      "target_table": "dev::User",
+      "source_data": {
+        "data_type": "CSV",
+        "file_name": "dev::Users.csv",
+        "has_header": true
+      },
+      "import_settings": {
+        "import_columns": [
+          "usid",
+          "name"
+        ]
+      }
+    },
+    {
+      "target_table": "dev::ExtraInfo.Address",
+      "source_data": {
+        "data_type": "CSV",
+        "file_name": "dev::Address.csv",
+        "has_header": true
+      },
+      "import_settings": {
+        "import_columns": [
+					"usid",
+					"city",
+					"strt",
+					"hnum"
+        ]
+      }
+    },
+    {
+      "target_table": "dev::ExtraInfo.Cars",
+      "source_data": {
+        "data_type": "CSV",
+        "file_name": "dev::Cars.csv",
+        "has_header": true
+      },
+      "import_settings": {
+        "import_columns": [
+					"crid",
+          "usid",
+          "name"
+        ]
+      }
+    }
+  ]
+}
