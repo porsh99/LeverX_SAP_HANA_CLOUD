@@ -1,17 +1,11 @@
 var user = function (connection) {
 
     const USER_TABLE = "testApp3::User";
-    /*
-            const USER = $.session.securityContext.userInfo.familyName ?
-                $.session.securityContext.userInfo.familyName + " " + $.session.securityContext.userInfo.givenName :
-                $.session.getUsername().toLocaleLowerCase(),
-    */
-
 
     this.doGet = function (obj) {
-        const result = connection.executeQuery('SELECT * FROM "testApp3::User"');
+        const result = connection.executeQuery('SELECT * FROM "' + USER_TABLE + '"');
 
-        result.forEach(x => $.trace.error(JSON.stringify(x)));
+        result.forEach(x => traceErr(JSON.stringify(x)));
 
         $.response.status = $.net.http.OK;
         $.response.setBody(JSON.stringify(result));
@@ -19,7 +13,7 @@ var user = function (connection) {
 
     this.doPost = function (oUser) {
 
-        oUser.usid = getNextval("testApp3::usid"); // right
+        oUser.usid = getNextval("testApp3::usid");
 
         const statement = createPreparedInsertStatement(USER_TABLE, oUser);
         connection.executeUpdate(statement.sql, statement.aValues);
@@ -49,79 +43,38 @@ var user = function (connection) {
         };
 
     function createPreparedInsertStatement(sTableName, oValueObject) {
-      let oResult = {
-            aParams: [],
-            aValues: [],
-            sql: "",
-        };
-        let sColumnList = '', sValueList = '';
 
-        Object.keys(oValueObject).forEach(value => {
-            sColumnList += `"${value}",`;
-            oResult.aParams.push(value);
-        });
+        var oResult = new oResult2();
 
-        Object.values(oValueObject).forEach(value => {
-            sValueList += "?, ";
-            oResult.aValues.push(value);
-        });
+        oResult.prepareParams(oValueObject);
+        oResult.traceParams();
+        oResult.sliceParamSpaces(); //WARN: magic numbers
+        oResult.sql = `insert into "${sTableName}" (${oResult.sColumnList}) values (${oResult.sValueList})`;
 
-        $.trace.error("svalue " + sValueList);
-        $.trace.error("scolumn: " + sColumnList);
-
-        // Remove the last unnecessary comma and blank
-        sColumnList = sColumnList.slice(0, -1);
-        sValueList = sValueList.slice(0, -2);
-
-        oResult.sql = `insert into "${sTableName}" (${sColumnList}) values (${sValueList})`;
-
-        $.trace.error("sql to insert: " + oResult.sql);
+        traceErr("sql to insert: " + oResult.sql);
         return oResult;
     };
 
     function createPreparedUpdateStatement(sTableName, oValueObject) {
-        let oResult = {
-            aParams: [],
-            aValues: [],
-            sql: "",
-        };
 
-        let sColumnList = '', sValueList = '';
+        var oResult = new oResult2();
 
-        Object.keys(oValueObject).forEach(value => {
-            sColumnList += `"${value}",`;
-            oResult.aParams.push(value);
-        });
+        oResult.prepareParams(oValueObject);
+        oResult.traceParams();
+        oResult.sliceParamSpaces(); //WARN: magic numbers
+        oResult.sql = `update "${sTableName}" set (${oResult.sColumnList}) = (${oResult.sValueList}) where "${oResult.aParams[0]}" = '${oResult.aValues[0]}'`;
 
-        Object.values(oValueObject).forEach(value => {
-            sValueList += "?, ";
-            oResult.aValues.push(value);
-        });
-
-        $.trace.error("svalue " + sValueList);
-        $.trace.error("scolumn: " + sColumnList);
-
-        sColumnList = sColumnList.slice(0, -1);
-        sValueList = sValueList.slice(0, -2);
-
-        oResult.sql = `update "${sTableName}" set (${sColumnList}) = (${sValueList}) where "${oResult.aParams[0]}" = '${oResult.aValues[0]}'`;
-
-        $.trace.error("sql to update: " + oResult.sql);
+        traceErr("sql to update: " + oResult.sql);
         return oResult;
     };
 
     function createPreparedDeleteStatement(sTableName, oConditionObject) {
-        let oResult = {
-            aParams: [],
-            aValues: [],
-            sql: "",
-        };
+        let oResult = new oResult2();
 
         let sWhereClause = '';
         for (let key in oConditionObject) {
             sWhereClause += `"${key}"=? and `;
             oResult.aValues.push(oConditionObject[key]);
-            oResult.aParams.push(key);
         }
         // Remove the last unnecessary AND
         sWhereClause = sWhereClause.slice(0, -5);
@@ -131,7 +84,7 @@ var user = function (connection) {
 
         oResult.sql = `delete from "${sTableName}" ${sWhereClause}`;
 
-        $.trace.error("sql to delete: " + oResult.sql);
+        traceErr("sql to delete: " + oResult.sql);
         return oResult;
     };
 
@@ -144,5 +97,41 @@ var user = function (connection) {
         } else {
             throw new Error('ID was not generated');
         }
+    }
+
+    function traceErr(value)
+    {
+      $.trace.error(value);
+    }
+
+    function oResult2()
+    {
+      this.aParams = [];
+      this.aValues = [];
+      this.sql = "";
+      this.sColumnList = '';
+      this.sValueList = '';
+
+      this.prepareParams = function(oValueObject)
+      {
+        for(let key in oValueObject){
+            this.sColumnList += `"${key}",`;
+            this.aParams.push(key);
+            this.sValueList += "?, ";
+            this.aValues.push(oValueObject[key]);
+        }
+      }
+
+      this.sliceParamSpaces = function()
+      {
+        this.sColumnList = this.sColumnList.slice(0, -1);
+        this.sValueList = this.sValueList.slice(0, -2);
+      }
+
+      this.traceParams = function()
+      {
+          $.trace.error("svalue " + this.sValueList);
+          $.trace.error("scolumn: " + this.sColumnList);
+      }
     }
 };

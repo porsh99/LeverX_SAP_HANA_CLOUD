@@ -19,10 +19,8 @@ function usersCreate(param){
     var oUser = oUserItems.items[0];
     $.trace.error(JSON.stringify(oUser));
 
-    //TODO now HERE you have oUser object. Similar to xsjs/lib/user/user.xsjslib method doPost line 13
-
 	//Get Next Personnel Number
-	pStmt = param.connection.prepareStatement('select "testApp3::usid".NEXTVAL from dummy');
+	pStmt = param.connection.prepareStatement('select "testApp3::usid".NEXTVAL from dummy'); //can BE___________
 	var result = pStmt.executeQuery();
 
     while (result.next()) {
@@ -32,21 +30,26 @@ function usersCreate(param){
     $.trace.error(JSON.stringify(oUser));
 	pStmt.close();
 	//Insert Record into DB Table and Temp Output Table
-	for( var i = 0; i<2; i++){
-		var pStmt;
-		if(i<1){
-			pStmt = param.connection.prepareStatement(`insert into "${USER_TABLE}" values(?,?)`);
-		}else{
-			pStmt = param.connection.prepareStatement("TRUNCATE TABLE \"" + after + "\"" );
-			pStmt.executeUpdate();
-			pStmt.close();
-			pStmt = param.connection.prepareStatement("insert into \"" + after + "\" values(?,?)" );
-		}
-		pStmt.setString(1, oUser.id.toString());
-		pStmt.setString(2, oUser.name.toString());
-		pStmt.executeUpdate();
-		pStmt.close();
-	}
+  var pStmt;
+
+  pStmt = param.connection.prepareStatement(`insert into "${USER_TABLE}" values(?,?)`);
+  prepareAndCloseStatement(pStmt);
+
+  pStmt = param.connection.prepareStatement("TRUNCATE TABLE \"" + after + "\"" );
+  pStmt.executeUpdate();
+  pStmt.close();
+
+  pStmt = param.connection.prepareStatement("insert into \"" + after + "\" values(?,?)" );
+  prepareAndCloseStatement(pStmt);
+
+  function prepareAndCloseStatement(_pStmt){
+    _pStmt.setString(1, oUser.id.toString());
+    _pStmt.setString(2, oUser.name.toString());
+    _pStmt.executeUpdate();
+    _pStmt.close();
+  }
+
+
 }
 
 function recordSetToJSON(rs,rsName){
