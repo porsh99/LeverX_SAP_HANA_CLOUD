@@ -12,7 +12,8 @@
   "main": "server.js",
   "name": "service",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "node testrun.js"
   },
   "engines": {
     "node": "8.x"

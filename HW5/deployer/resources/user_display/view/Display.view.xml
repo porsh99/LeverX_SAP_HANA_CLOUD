@@ -1,0 +1,54 @@
+<mvc:View controllerName="user_display.controller.Display" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc">
+  <Shell>
+    <App>
+      <pages>
+        <Page>
+          <Panel id="PeopleDetailPanel" headerText="Details" class="sapUiResponsiveMargin" width="auto">
+            <content>
+              <Label text="{i18n>id}" id="Label1" />
+              <Input width="100%" id="input_id" enabled="true" />
+              <Label text="{i18n>name}" id="Label2" />
+              <Input width="100%" id="input_name" enabled="true" />
+              <Button text="{i18n>create}" press=".createUser"></Button>
+              <Button text="{i18n>update}" press=".updateUser"></Button>
+            </content>
+            <content>
+              <Table id="details" items="{path: 'users>/Users'}">
+                <columns>
+                  <Column id="userIdColumn">
+                    <Text text="{i18n>userIdText}" />
+                  </Column>
+                  <Column id="userNameColumn">
+                    <Text text="{i18n>userNameText}" />
+                  </Column>
+                  <Column id="userUpdateColumn">
+                    <Text text="{i18n>userUpdate}" />
+                  </Column>
+                  <Column id="userCreateColumn">
+                    <Text text="{i18n>userCreate}" />
+                  </Column>
+                </columns>
+                <items>
+                  <ColumnListItem>
+                    <cells>
+                      <Label text="{users>usid}" />
+                    </cells>
+                    <cells>
+                      <Label text="{users>name}" />
+                    </cells>
+                    <cells>
+                      <Label text="{users>ts_update}" />
+                    </cells>
+                    <cells>
+                      <Label text="{users>ts_create}" />
+                    </cells>
+                  </ColumnListItem>
+                </items>
+              </Table>
+            </content>
+          </Panel>
+        </Page>
+      </pages>
+    </App>
+  </Shell>
+</mvc:View>

@@ -2,24 +2,26 @@
   "format_version": 1,
   "imports": [
     {
-      "target_table": "dev::User",
+      "target_table": "hw3::User",
       "source_data": {
         "data_type": "CSV",
-        "file_name": "dev::Users.csv",
+        "file_name": "hw3::Users.csv",
         "has_header": true
       },
       "import_settings": {
         "import_columns": [
           "usid",
-          "name"
+          "name",
+          "ts_update",
+          "ts_create"
         ]
       }
     },
     {
-      "target_table": "dev::ExtraInfo.Address",
+      "target_table": "hw3::ExtraInfo.Address",
       "source_data": {
         "data_type": "CSV",
-        "file_name": "dev::Address.csv",
+        "file_name": "hw3::Address.csv",
         "has_header": true
       },
       "import_settings": {
@@ -32,10 +34,10 @@
       }
     },
     {
-      "target_table": "dev::ExtraInfo.Cars",
+      "target_table": "hw3::ExtraInfo.Cars",
       "source_data": {
         "data_type": "CSV",
-        "file_name": "dev::Cars.csv",
+        "file_name": "hw3::Cars.csv",
         "has_header": true
       },
       "import_settings": {

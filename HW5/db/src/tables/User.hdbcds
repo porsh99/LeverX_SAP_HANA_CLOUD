@@ -1,7 +1,7 @@
-namespace dev;
+namespace hw3;
 
-using dev::ExtraInfo.Address;
-using dev::ExtraInfo.Cars;
+using hw3::ExtraInfo.Address;
+using hw3::ExtraInfo.Cars;
 
 
 entity User {
@@ -9,6 +9,10 @@ entity User {
     key usid : String(4);
     @Comment: 'Description'
     name : String(100);
+    @Comment: 'Update time'
+    ts_update : UTCDateTime;
+    @Comment: 'Create time'
+    ts_create : UTCDateTime;
 
     toCars : Association[*] to Cars on toCars.usid = usid;
     toAddress : Association[1] to Address on toAddress.usid = usid;

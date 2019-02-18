@@ -1,8 +1,8 @@
-﻿ID: dev
+﻿ID: hw3
 _schema-version: 2.1
 version: 0.0.1
 parameters:
-  deploy_mode: html5-repo
+    deploy_mode: html5-repo
 modules:
     -
         name: db
@@ -22,31 +22,31 @@ modules:
         requires:
             - {name: pt_db}
             - {name: pt_hdi}
-            - {name: pt_uaa}
+#            - {name: pt_uaa}
         provides:
             - {name: pt_service, properties: {url: '${default-url}'}}
         parameters:
             memory: 128M
             disk_quota: 128M
-    # -
-    #     name: flp
-    #     type: com.sap.portal.site-content
-    #     path: flp
-    #     parameters:
-    #         memory: 128M
-    #         buildpack: 'https://github.com/cloudfoundry/nodejs-buildpack/releases/download/v1.6.21/nodejs-buildpack-v1.6.21.zip'
-    #     requires:
-    #         - {name: pt_portal}
-    #         - {name: pt_uaa}
-    #         - {name: pt_deployer}
-    #         - {name: deployer}
+#    -
+#        name: flp
+#        type: com.sap.portal.site-content
+#        path: flp
+#        parameters:
+#            memory: 128M
+#            buildpack: 'https://github.com/cloudfoundry/nodejs-buildpack/releases/download/v1.6.21/nodejs-buildpack-v1.6.21.zip'
+#        requires:
+#            - {name: pt_portal}
+#            - {name: pt_uaa}
+#            - {name: pt_deployer}
+#            - {name: deployer}
     -
         name: user_create
         type: html5
         path: web/user_create
         parameters:
-            memory: 256M
             disk-quota: 256M
+            memory: 256M
         build-parameters:
             builder: grunt
         requires:
@@ -67,8 +67,8 @@ modules:
         type: nodejs
         path: router
         parameters:
-            memory: 128M
             disk-quota: 256M
+            memory: 128M
         properties:
             XS_APP_LOG_LEVEL: debug
         requires:
@@ -76,7 +76,7 @@ modules:
             - {name: pt_conn}
             - {name: pt_uaa}
             - {name: pt_router}
-            # - {name: pt_portal}
+#            - {name: pt_portal}
             - {name: pt_service, group: destinations, properties: {name: pt_service, url: '~{url}', forwardAuthToken: true}}
     -
         name: deployer
@@ -87,15 +87,14 @@ modules:
         build-parameters:
             requires: [{name: user_create, artifacts: ['./*'], target-path: resources/user_create},{name: user_display, artifacts: ['./*'], target-path: resources/user_display}]
         parameters:
-            memory: 128M
             disk-quota: 256M
+            memory: 128M
 resources:
-    # -
-    #     name: pt_portal
-    #     parameters:
-    #       service-plan: standard
-    #       service: portal
-    #     type: org.cloudfoundry.managed-service
+#    -   name: pt_portal
+#        parameters:
+#           service-plan: standard
+#           service: portal
+#        type: org.cloudfoundry.managed-service
     -
         name: pt_uaa
         parameters:

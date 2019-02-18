@@ -1,5 +1,5 @@
-﻿namespace dev;
-using dev::User;
+﻿namespace hw3;
+using hw3::User;
 
 context ExtraInfo{
 

@@ -1,18 +1,18 @@
 {
-  "xsappname": "dev",
+  "xsappname": "hw3",
   "tenant-mode": "dedicated",
-  "description": "Security profile of called application",
+  "description": "homework 5",
   "scopes": [
     {
       "name": "uaa.user",
       "description": "UAA"
     },
     {
-      "name": "$XSAPPNAME.himta.view",
+      "name": "$XSAPPNAME.hw3.view",
       "description": "Display users"
     },
     {
-      "name": "$XSAPPNAME.himta.create",
+      "name": "$XSAPPNAME.hw3.create",
       "description": "Create users"
     }
   ],
@@ -32,20 +32,20 @@
       ]
     },
     {
-      "name": "GodBatyshka",
+      "name": "Admin",
       "description": "Can do anything",
       "scope-references": [
-        "$XSAPPNAME.himta.view",
-        "$XSAPPNAME.himta.create"
+        "$XSAPPNAME.hw3.view",
+        "$XSAPPNAME.hw3.create"
       ],
       "attribute-references": [
       ]
     },
     {
-      "name": "SimpleUser",
+      "name": "User",
       "description": "Display mode only",
       "scope-references": [
-        "$XSAPPNAME.himta.view"
+        "$XSAPPNAME.hw3.view"
       ],
       "attribute-references": [
       ]

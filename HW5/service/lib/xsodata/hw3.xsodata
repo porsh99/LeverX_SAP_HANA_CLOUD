@@ -1,17 +1,17 @@
-service namespace "dev"{
+service namespace "hw3"{
 
-    "dev::User" as "Users"
+    "hw3::User" as "Users"
                 navigates("Users_2_Address" as "toAddress", "Users_2_Cars" as "toCars")
-            create using "xsjs.user:crudODATA.xsjslib::usersCreate"
-            update using "xsjs.user:crudODATA.xsjslib::usersUpdate"
-            delete using "xsjs.user:crudODATA.xsjslib::usersDelete";
+            create using "xsjs.user:usersCreate.xsjslib::usersCreate"
+            update using "xsjs.user:usersCreate.xsjslib::usersUpdate"
+            delete forbidden;
 
-    "dev::ExtraInfo.Address" as "Address"
+    "hw3::ExtraInfo.Address" as "Address"
             create forbidden
             update forbidden
             delete forbidden;
 
-    "dev::ExtraInfo.Cars" as "Cars"
+    "hw3::ExtraInfo.Cars" as "Cars"
                 navigates("Cars_2_User" as "toUser")
             create forbidden
             update forbidden
