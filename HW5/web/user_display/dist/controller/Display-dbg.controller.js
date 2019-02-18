@@ -23,6 +23,8 @@ sap.ui.define([
 			$.ajax(settings).done(function (response) {
 				console.log(response);
 			});
+
+			window.location.reload();
 		},		
 			updateUser: function () {
 			var Name = sap.ui.getCore().byId(this.getView().sId + "--input_name").getValue();
@@ -43,6 +45,8 @@ sap.ui.define([
 			$.ajax(settings).done(function (response) {
 				console.log(response);
 			});
+
+			window.location.reload();
 		}
 	
 	});
