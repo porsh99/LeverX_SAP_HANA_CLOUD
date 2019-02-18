@@ -1,6 +1,7 @@
 var user = function (connection) {
 
     const USER_TABLE = "testApp3::User";
+    const USER_ID = '"testApp3::usid"';
 
     this.doGet = function (obj) {
         const result = connection.executeQuery('SELECT * FROM "' + USER_TABLE + '"');
@@ -13,7 +14,7 @@ var user = function (connection) {
 
     this.doPost = function (oUser) {
 
-        oUser.usid = getNextval("testApp3::usid");
+        oUser.usid = getNextval(USER_ID);//changed
 
         const statement = createPreparedInsertStatement(USER_TABLE, oUser);
         connection.executeUpdate(statement.sql, statement.aValues);

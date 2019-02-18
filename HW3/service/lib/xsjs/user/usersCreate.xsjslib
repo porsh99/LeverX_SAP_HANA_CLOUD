@@ -5,51 +5,66 @@
  */
 
  const USER_TABLE = "testApp3::User";
- const SEQ_NAME = "testApp3::User";
+ const SEQ_NAME = "testApp3::usid";
+ const CURR_TIMESTAMP_FUN = "current_timestamp";
 
 function usersCreate(param){
-    $.trace.error(JSON.stringify(param));
-    var after = param.afterTableName;
+  traceErr(JSON.stringify(param));
+  var after = param.afterTableName;
 
-    //Get Input New Record Values
-    var	pStmt = param.connection.prepareStatement("select * from \"" + after + "\"");
-    var oResult = pStmt.executeQuery();
+  //Get Input New Record Values
+  var	pStmt = param.connection.prepareStatement(`select * from  "${after}"`);
+  var oResult = executeQueryCloseStatement(pStmt);
 
-    var oUserItems = recordSetToJSON(oResult, "items");
-    var oUser = oUserItems.items[0];
-    $.trace.error(JSON.stringify(oUser));
+  var oUserItems = recordSetToJSON(oResult, "items");
+  var oUser = oUserItems.items[0];
+  traceErr(JSON.stringify(oUser));
 
 	//Get Next Personnel Number
-	pStmt = param.connection.prepareStatement('select "testApp3::usid".NEXTVAL from dummy'); //can BE___________
-	var result = pStmt.executeQuery();
+	pStmt = param.connection.prepareStatement(`select "${SEQ_NAME}".NEXTVAL from dummy`);
+	var result = executeQueryCloseStatement(pStmt);
+  oUser.id = getUserIDFromSequenceResult(result);
 
-    while (result.next()) {
-		oUser.id = result.getString(1);
-	}
-
-    $.trace.error(JSON.stringify(oUser));
-	pStmt.close();
+  traceErr(JSON.stringify(oUser));
 	//Insert Record into DB Table and Temp Output Table
-  var pStmt;
 
-  pStmt = param.connection.prepareStatement(`insert into "${USER_TABLE}" values(?,?)`);
-  prepareAndCloseStatement(pStmt);
+  pStmt = param.connection.prepareStatement(`insert into "${USER_TABLE}" values(?,?,?,?);`);
+  prepareStatementValues(pStmt, oUser);
+  executeUpdateCloseStatement(pStmt);
 
-  pStmt = param.connection.prepareStatement("TRUNCATE TABLE \"" + after + "\"" );
-  pStmt.executeUpdate();
-  pStmt.close();
+  pStmt = param.connection.prepareStatement(`TRUNCATE TABLE "${after}"`);
+  executeUpdateCloseStatement(pStmt);
 
-  pStmt = param.connection.prepareStatement("insert into \"" + after + "\" values(?,?)" );
-  prepareAndCloseStatement(pStmt);
+  pStmt = param.connection.prepareStatement(`insert into "${after}" values(?,?,?,?);`);
+  prepareStatementValues(pStmt, oUser);
+  executeUpdateCloseStatement(pStmt);
+}
+//WARN: hard code 4 column values type of table User: usid, name, ts_update, ts_create
+function prepareStatementValues(_stmt, _oUser){
+  _stmt.setString(1, _oUser.id.toString());
+  _stmt.setString(2, _oUser.name.toString());
+  _stmt.setDate(3, (new Date()).toISOString());
+  _stmt.setDate(4, (new Date()).toISOString());
+}
 
-  function prepareAndCloseStatement(_pStmt){
-    _pStmt.setString(1, oUser.id.toString());
-    _pStmt.setString(2, oUser.name.toString());
-    _pStmt.executeUpdate();
-    _pStmt.close();
+function executeUpdateCloseStatement(_stmt){
+  _stmt.executeUpdate();
+  _stmt.close();
+}
+
+function executeQueryCloseStatement(_stmt){
+  var result = _stmt.executeQuery();
+  _stmt.close();
+  return result;
+}
+
+function getUserIDFromSequenceResult(_result){
+  var id = "0000";
+  while (_result.next())
+  {
+    id = _result.getString(1);
   }
-
-
+  return id;
 }
 
 function recordSetToJSON(rs,rsName){
@@ -132,7 +147,6 @@ function recordSetToJSON(rs,rsName){
     return 	JSON.parse('{"'+ rsName +'" : [' + table	+']}');
 
 }
-
 function escapeSpecialChars(input) {
     if(typeof(input) != 'undefined' && input != null)
     {
@@ -145,12 +159,11 @@ function escapeSpecialChars(input) {
             .replace(/[\n]/g, '\\n')
             .replace(/[\r]/g, '\\r')
             .replace(/[\t]/g, '\\t'); }
-    else{
-
+    else
+    {
         return "";
     }
 }
-
 function escapeSpecialCharsText(input) {
     if(typeof(input) != 'undefined' && input != null)
     {
@@ -164,23 +177,28 @@ function escapeSpecialCharsText(input) {
 
         return input;
     }
-    else{
-
+    else
+    {
         return "";
     }
 }
 
-
 function usersUpdate(param) {
   var after = param.afterTableName;
 
-  var pStmt = param.connection.prepareStatement("select * from \"" + after + "\"");
-  var oResult = pStmt.executeQuery();
+  var pStmt = param.connection.prepareStatement(`select * from  "${after}"`);
+  var oResult = executeQueryCloseStatement(pStmt);
 
   var oUserItems = recordSetToJSON(oResult, "items");
   var oUser = oUserItems.items[0];
-$.trace.error(JSON.stringify(oUser));
-  var uStmt;
-  uStmt = param.connection.prepareStatement(`UPDATE "${USER_TABLE}" SET "name"='${oUser.name}' WHERE "usid"=${oUser.usid};`);
-  uStmt.executeUpdate();
+  var sql = `UPDATE "${USER_TABLE}" SET "name"='${oUser.name}', "ts_update" = ${CURR_TIMESTAMP_FUN} WHERE "usid"=${oUser.usid};`;
+
+  var uStmt = param.connection.prepareStatement(sql);
+  executeUpdateCloseStatement(uStmt);
+}
+
+
+function traceErr(value)
+{
+  $.trace.error(value);
 }

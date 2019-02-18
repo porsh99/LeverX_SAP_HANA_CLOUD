@@ -12,19 +12,19 @@
 [main] INFO com.sap.di.ext.mta.proc.ProcessingRun - Verifying MTA testApp3
 [main] INFO com.sap.di.ext.mta.proc.ProcessingRun - Verifying MTA testApp3: created 5 verification tasks
 [pool-1-thread-2] INFO com.sap.di.ext.mta.proc.ProcessingRun - Verifying MTA testApp3: started symbol resource[pt_conn]
-[pool-1-thread-3] INFO com.sap.di.ext.mta.proc.ProcessingRun - Verifying MTA testApp3: started symbol resource[pt_dest]
-[pool-1-thread-1] INFO com.sap.di.ext.mta.proc.ProcessingRun - Verifying MTA testApp3: started symbol resource[pt_hdi]
 [pool-1-thread-4] INFO com.sap.di.ext.mta.proc.ProcessingRun - Verifying MTA testApp3: started symbol module[db]
+[pool-1-thread-1] INFO com.sap.di.ext.mta.proc.ProcessingRun - Verifying MTA testApp3: started symbol resource[pt_hdi]
+[pool-1-thread-3] INFO com.sap.di.ext.mta.proc.ProcessingRun - Verifying MTA testApp3: started symbol resource[pt_dest]
 [pool-1-thread-5] INFO com.sap.di.ext.mta.proc.ProcessingRun - Verifying MTA testApp3: started symbol module[service]
 [pool-1-thread-1] INFO com.sap.di.ext.mta.proc.ProcessingRun - Verifying MTA testApp3: finished symbol resource[pt_hdi]
 [pool-1-thread-2] INFO com.sap.di.ext.mta.proc.ProcessingRun - Verifying MTA testApp3: finished symbol resource[pt_conn]
 [pool-1-thread-3] INFO com.sap.di.ext.mta.proc.ProcessingRun - Verifying MTA testApp3: finished symbol resource[pt_dest]
 [pool-1-thread-5] DEBUG com.sap.di.ext.mta.cli.CommandHelper - Module 'service': command timeout is 300 seconds
 [pool-1-thread-4] DEBUG com.sap.di.ext.mta.cli.CommandHelper - Module 'db': command timeout is 300 seconds
-[pool-1-thread-5] DEBUG com.sap.di.ext.mta.cli.CommandHelper - Module 'service': command output file is D:\Work\LeverX\HW\HW3\testApp3\.mta\modulebuild7191503008333978533.txt
-[pool-1-thread-5] DEBUG com.sap.di.ext.mta.cli.CommandHelper - Module 'service': invoking command [npm.cmd, install, --production]
-[pool-1-thread-4] DEBUG com.sap.di.ext.mta.cli.CommandHelper - Module 'db': command output file is D:\Work\LeverX\HW\HW3\testApp3\.mta\modulebuild7066709105250537016.txt
+[pool-1-thread-5] DEBUG com.sap.di.ext.mta.cli.CommandHelper - Module 'service': command output file is D:\Work\LeverX\HW\HW3\testApp3\.mta\modulebuild1006745280240986049.txt
+[pool-1-thread-4] DEBUG com.sap.di.ext.mta.cli.CommandHelper - Module 'db': command output file is D:\Work\LeverX\HW\HW3\testApp3\.mta\modulebuild2898314010777450214.txt
 [pool-1-thread-4] DEBUG com.sap.di.ext.mta.cli.CommandHelper - Module 'db': invoking command [npm.cmd, install, --production]
+[pool-1-thread-5] DEBUG com.sap.di.ext.mta.cli.CommandHelper - Module 'service': invoking command [npm.cmd, install, --production]
 [pool-1-thread-4] INFO com.sap.di.ext.mta.proc.ProcessingRun - Verifying MTA testApp3: finished symbol module[db]
 [pool-1-thread-5] INFO com.sap.di.ext.mta.proc.ProcessingRun - Verifying MTA testApp3: finished symbol module[service]
 [main] INFO com.sap.di.beans.DynamicBeans - Created implementation class com.sap.di.ext.mta.dto.DeploymentDescriptor$$impl6 for bean interface com.sap.di.ext.mta.dto.DeploymentDescriptor
