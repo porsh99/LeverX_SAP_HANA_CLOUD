@@ -61,18 +61,18 @@ sap.ui.define([
 
 	this.saveCarChanges = function () {
 		{
-
-			// var carID = getCar().crid;
-			// var carBrend = sap.ui.getCore().byId("newCarBrend").getValue();
-			// var carModel = sap.ui.getCore().byId("newCarModel").getValue();
-			// var carGeneration = sap.ui.getCore().byId("newcarGeneration").getValue();
+			//getViewModel().byId("newCarBrend").getValue(),
+			 var carID = getCar().crid;
+			 var carBrend = sap.ui.getCore().byId("newCarBrend").getValue();
+			 var carModel = sap.ui.getCore().byId("newCarModel").getValue();
+			 var carGeneration = sap.ui.getCore().byId("newcarGeneration").getValue();
 
 			var oObject = {};
 			oObject = {
-				"crid": getCar().crid,
-				"brend": getViewModel().byId("newCarBrend").getValue(),
-				"model": getViewModel().byId("newCarModel"),
-				"generation": getViewModel().byId("newcarGeneration"),
+				"crid": carID,
+				"brend": carBrend,
+				"model": carModel,
+				"generation": carGeneration,
 				"ts_update": null,
 				"ts_create": null
 			};
@@ -232,7 +232,18 @@ sap.ui.define([
 			});
 			dialog.open();
 			setViewModel(this.getView());
-		}
+		},
+		_getDialog : function () {
+			if (!this._oDialog) {
+			   this._oDialog = sap.ui.xmlfragment("view.HelloDialog", this);
+			   
+			   this.getView().addDependent(this._oDialog);
+			}
+			return this._oDialog;
+		 },
+		 onOpenDialog : function () {
+			this._getDialog().open();
+		 }
 
 	});
 });
