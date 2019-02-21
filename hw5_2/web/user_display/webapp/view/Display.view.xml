@@ -1,0 +1,67 @@
+<mvc:View controllerName="user_display.controller.Display" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc">
+  <Shell>
+    <App>
+      <pages>
+        <Page>
+          <Panel id="PeopleDetailPanel" headerText="{i18n>headerText}" class="sapUiResponsiveMargin" width="auto">
+            <content>
+              <Label text="{i18n>id}" id="Label1" />
+              <Input width="100%" id="input_id" enabled="true" />
+              <Label text="{i18n>name}" id="Label2" />
+              <Input width="100%" id="input_name" enabled="true" />
+              <Button type="Emphasized" icon="sap-icon://add" press=".createUser" class="sapUiSmallMargin"></Button>
+              <Button type="Emphasized" icon="sap-icon://edit" press="onClickEdit" class="sapUiSmallMargin"/>
+              <Button type="Emphasized" icon="sap-icon://delete" press=".createUser" class="sapUiSmallMargin"></Button>
+            </content>
+            <content>
+              <Table id="details" mode="SingleSelectMaster" items="{path: 'cars>/Cars'}" selectionChange=".selectTableCarsItem">
+                <columns>
+                  <Column id="carID" width="60px">
+                    <Text text="{i18n>colNameID}" />
+                  </Column>
+                  <Column id="carBrend">
+                    <Text text="{i18n>colNameCarBrend}" />
+                  </Column>
+                  <Column id="carModel" width="90px">
+                    <Text text="{i18n>colNameCarModel}" />
+                  </Column>
+                  <Column id="carGeneration" width="100px">
+                    <Text text="{i18n>colNameCarGeneration}" />
+                  </Column>
+                  <Column id="carCreate">
+                    <Text text="{i18n>colNameTSUpdate}"/>
+                  </Column>
+                  <Column id="carUpdate">
+                    <Text text="{i18n>colNameTSCreate}" />
+                  </Column>
+                </columns>
+                <items>
+                  <ColumnListItem>
+                    <cells>
+                      <Text text="{cars>crid}" />
+                    </cells>
+                    <cells>
+                      <Text text="{cars>brend}" />
+                    </cells>
+                    <cells>
+                      <Text text="{cars>model}" />
+                    </cells>
+                    <cells>
+                      <Text text="{cars>generation}" />
+                    </cells>
+                    <cells>
+                      <Text text="{cars>ts_update}" />
+                    </cells>
+                    <cells>
+                      <Text text="{cars>ts_create}" />
+                    </cells>
+                  </ColumnListItem>
+                </items>
+              </Table>
+            </content>
+          </Panel>
+        </Page>
+      </pages>
+    </App>
+  </Shell>
+</mvc:View>

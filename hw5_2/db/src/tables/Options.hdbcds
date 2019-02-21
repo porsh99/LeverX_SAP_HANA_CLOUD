@@ -1,0 +1,21 @@
+namespace hw3;
+
+using hw3::Cars;
+
+
+entity Options {
+    @Comment: 'Id of Option'
+    key opid : String(4);
+    @Comment: 'Id of Car'
+    crid : String(4);
+    @Comment: 'Name of Option'
+    name : String(100);
+    @Comment: 'Cost of Option'
+    cost : String(100);
+    @Comment: 'Update time'
+    ts_update : UTCDateTime;
+    @Comment: 'Create time'
+    ts_create : UTCDateTime;
+
+    toCars : Association[*] to Cars on toCars.crid = crid;
+};

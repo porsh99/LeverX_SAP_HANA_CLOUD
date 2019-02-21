@@ -1,0 +1,19 @@
+namespace hw3;
+using hw3::Options;
+
+entity Cars {
+		@Comment: 'Id of Car'
+		key crid : String(4);
+		@Comment: 'Brend of car'
+		brend : String(50);
+		@Comment: 'Model of brend'
+		model : String(100);
+		@Comment: 'Generation of model'
+		generation : String(50);
+		@Comment: 'Update time'
+		ts_update : UTCDateTime;
+		@Comment: 'Create time'
+		ts_create : UTCDateTime;
+
+		toOptions : Association[1] to Options on toOptions.crid = crid;
+		};
