@@ -6,7 +6,7 @@
           <Panel id="PeopleDetailPanel" headerText="{i18n>headerText}" class="sapUiResponsiveMargin" width="auto">
             <content>
               <Label text="{i18n>id}" id="Label1" />
-              <Input width="100%" id="input_id" enabled="true" />
+              <Input width="100%" id="input_id" enabled="true" value="{init_data>butEnabled}"/>
               <Label text="{i18n>name}" id="Label2" />
               <Input width="100%" id="input_name" enabled="true" />
               <Button type="Emphasized" icon="sap-icon://add" press=".createUser" class="sapUiSmallMargin"></Button>
@@ -18,7 +18,7 @@
               <Table id="details" mode="SingleSelectMaster" items="{path: 'cars>/Cars'}" selectionChange=".selectTableCarsItem">
                 <columns>
                   <Column id="carID" width="60px">
-                    <Text text="{init_data>settings}" />
+                    <Text text="{i18n>colNameID}" />
                   </Column>
                   <Column id="carBrend">
                     <Text text="{i18n>colNameCarBrend}" />
