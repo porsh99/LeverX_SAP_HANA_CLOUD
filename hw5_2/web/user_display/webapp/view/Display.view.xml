@@ -18,7 +18,7 @@
               <Table id="details" mode="SingleSelectMaster" items="{path: 'cars>/Cars'}" selectionChange=".selectTableCarsItem">
                 <columns>
                   <Column id="carID" width="60px">
-                    <Text text="{i18n>colNameID}" />
+                    <Text text="{init_data>settings}" />
                   </Column>
                   <Column id="carBrend">
                     <Text text="{i18n>colNameCarBrend}" />

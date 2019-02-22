@@ -1,0 +1,28 @@
+<core:FragmentDefinition xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m">
+    <Dialog xmlns="sap.ui.commons" xmlns:b="sap.suite.ui.commons" xmlns:m="sap.m" stretch="true" showHeader="true"
+        title="{i18n>headerCarDialogText}">
+        <Label text="123"></Label>
+        <Label text="123"></Label>
+        <Label text="123"></Label>
+        <Label text="123"></Label>
+
+        		<Panel>
+				<headerToolbar>
+					<Toolbar>
+						<Title level="H2" text="Upper left" />
+					</Toolbar>
+				</headerToolbar>
+				<FlexBox
+					height="100px"
+					alignItems="Start"
+					justifyContent="Start">
+					<items>
+						<Button text="1" type="Emphasized" class="sapUiSmallMarginEnd" />
+						<Button text="2" type="Reject" class="sapUiSmallMarginEnd" />
+						<Button text="3" type="Accept" />
+					</items>
+				</FlexBox>
+			</Panel>
+    </Dialog>
+</core:FragmentDefinition>

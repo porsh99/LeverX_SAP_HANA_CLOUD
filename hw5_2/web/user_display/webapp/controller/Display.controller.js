@@ -1,8 +1,9 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
 	"sap/m/MessageToast",
-	"sap/m/Button"
-], function (Controller, MessageToast, Button) {
+	"sap/m/Button",
+	"sap/ui/model/json/JSONModel"
+], function (Controller, MessageToast, Button, JSONModel) {
 	"use strict";
 
 	var sCar;
@@ -101,7 +102,26 @@ sap.ui.define([
 
 	return Controller.extend("user_display.controller.Detail", {
 		onInit: function () {
+
+			var mod = this.getView().getModel("init_data");
+			//MessageToast.show(mod);
+			//var oModel = new JSONModel("user_display/model/init_data.json");
+			console.log("_____________");
+			//console.log(oModel);
+			console.log(mod);
+
 			setViewModel(this.getView());
+			if (!this._dialog) {
+				this._dialog = sap.ui.xmlfragment("user_display.view.BusyDialog", this);
+				this.getView().addDependent(this._dialog);
+			}
+
+			jQuery.sap.syncStyleClass("sapUiSizeCompact", this.getView(), this._dialog);
+			this._dialog.open();
+
+			_timeout = jQuery.sap.delayedCall(300, this, function () {
+				this._dialog.close();
+			});
 		},
 		createUser: function () {
 			var Name = sap.ui.getCore().byId(this.getView().sId + "--input_name").getValue();
@@ -151,6 +171,7 @@ sap.ui.define([
 			var oTable = getViewModel().byId("details");
 			setCar(oTable.getSelectedItem().getBindingContext("cars").getObject());
 		},
+		
 		onClickEdit: function (oEvent) {
 
 			var oCar = getCar();
@@ -235,7 +256,7 @@ sap.ui.define([
 		},
 		_getDialog : function () {
 			if (!this._oDialog) {
-			   this._oDialog = sap.ui.xmlfragment("view.HelloDialog", this);
+			   this._oDialog = sap.ui.xmlfragment("user_display.view.CarDialogFields");
 			   
 			   this.getView().addDependent(this._oDialog);
 			}

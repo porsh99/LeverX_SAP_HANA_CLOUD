@@ -20,6 +20,10 @@
 				"settings": {
 					"odataVersion": "2.0"
 				}
+			},
+			"init_data_alias": {
+				"uri": "../model/init_data.json",
+				"type": "JSON"
 			}
 		}
 	},
@@ -80,7 +84,11 @@
 					"useBatch": false,
 					"disableHeadRequestForToken": true
 				}
-			}	
+			},
+			"init_data": {
+				"type": "sap.ui.model.json.JSONModel",
+				"dataSource": "init_data_alias"
+			}
 		}
 		},
 		"resources": {		}
