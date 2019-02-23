@@ -87,7 +87,7 @@
 			},
 			"init_data": {
 				"type": "sap.ui.model.json.JSONModel",
-				"dataSource": "init_data_alias"
+				"uri": "/model/init_data.json"
 			}
 		}
 		},
