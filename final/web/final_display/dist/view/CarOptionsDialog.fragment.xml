@@ -1,0 +1,25 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<TableSelectDialog noDataText="{i18n>mesNoOptionsFound}" title="{i18n>titleCarOptionDialog}" confirm="handleClose" cancel="handleClose"
+	 items="{
+			path : 'options>/d/results/'
+		}">
+		<ColumnListItem>
+			<cells>
+				<Text text="{options>name}" />
+				<Text text="{options>cost}" />
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column>
+				<header>
+					<Text text="{i18n>colNameOptionName}" />
+				</header>
+			</Column>
+			<Column>
+				<header>
+					<Text text="{i18n>colNameOptionCost}" />
+				</header>
+			</Column>
+		</columns>
+	</TableSelectDialog>
+</core:FragmentDefinition>

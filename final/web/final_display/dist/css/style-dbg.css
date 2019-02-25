@@ -1,0 +1,10 @@
+.toolBarContainer {
+    position: fixed;
+    top: 85%;
+    left: 2%;
+    z-index: 12;
+    border: 2px solid rgb(71, 99, 221);
+    background-color: white;
+    border-radius: 10px;
+}
+

@@ -1,0 +1,32 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout">
+	<Dialog id="carDialog" title="{settings>/carDialogTittle}" class="sapUiPopupWithPadding">
+		<l:VerticalLayout id="containerLayout" width="350px">
+			<l:content>
+				<l:HorizontalLayout width="350px">
+					<l:content>
+						<Label width="100px" text="{i18n>labelCarBrend}" required="true"/>
+						<Input id="newCarBrend" width="250px" type="Text" liveChange="emptyInputFieldCheck" value="{carModel>/brend}"/>
+					</l:content>
+				</l:HorizontalLayout>
+				<l:HorizontalLayout width="350px">
+					<l:content>
+						<Label width="100px" text="{i18n>labelCarModel}" required="true"/>
+						<Input id="newCarModel" width="250px" type="Text" liveChange="emptyInputFieldCheck" value="{carModel>/model}"/>
+					</l:content>
+				</l:HorizontalLayout>
+				<l:HorizontalLayout width="350px">
+					<l:content>
+						<Label width="100px" text="{i18n>labelCarGeneration}" required="true"/>
+						<Input id="newCarGeneration" width="250px" type="Text" required="true" liveChange="emptyInputFieldCheck" value="{carModel>/generation}"/>
+					</l:content>
+				</l:HorizontalLayout>
+			</l:content>
+		</l:VerticalLayout>
+		<beginButton>
+			<Button icon="sap-icon://save" type="Accept" text="" press="saveCarChaneges" />
+		</beginButton>
+		<endButton>
+			<Button icon="sap-icon://decline" type="Reject" text="" press=".onCloseDialog" />
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

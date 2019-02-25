@@ -1,0 +1,41 @@
+{
+  "format_version": 1,
+  "imports": [
+    {
+      "target_table": "hw3::Cars",
+      "source_data": {
+        "data_type": "CSV",
+        "file_name": "hw3::Cars.csv",
+        "has_header": true
+      },
+      "import_settings": {
+        "import_columns": [
+          "crid",
+          "brend",
+          "model",
+          "generation",
+          "ts_update",
+          "ts_create"
+        ]
+      }
+    },
+    {
+      "target_table": "hw3::Options",
+      "source_data": {
+        "data_type": "CSV",
+        "file_name": "hw3::Options.csv",
+        "has_header": true
+      },
+      "import_settings": {
+        "import_columns": [
+					"opid",
+          "crid",
+          "name",
+          "cost",
+          "ts_update",
+          "ts_create"
+        ]
+      }
+    }
+  ]
+}

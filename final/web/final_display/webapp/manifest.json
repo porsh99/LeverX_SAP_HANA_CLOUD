@@ -1,0 +1,95 @@
+{
+	"_version": "1.8.0",
+	"sap.app": {
+		"id": "final_display",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"sourceTemplate": {
+			"id": "html5moduletemplates.basicSAPUI5ApplicationProjectModule",
+			"version": "1.40.12"
+		},
+		"dataSources": {
+			"mainService": {
+				"uri": "https://porsh99-dev-router.cfapps.eu10.hana.ondemand.com/api/xsodata/hw3.xsodata",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0"
+				}
+			}
+		}
+	},
+
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": [
+			"sap_hcb",
+			"sap_belize"
+
+		]
+	},
+
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "final_display.view.Display",
+			"type": "XML",
+			"async": true,
+			"id": "display"
+		},
+		"dependencies": {
+			"minUI5Version": "1.60.1",
+			"libs": {
+				"sap.ui.core": {},
+				"sap.m": {},
+				"sap.ui.layout": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "final_display.i18n.i18n"
+				}
+			},
+			"cars": {
+				"dataSource": "mainService",
+				"settings": {
+					"defaultBindingMode": "TwoWay",
+					"defaultCountMode": "Inline",
+					"useBatch": false,
+					"disableHeadRequestForToken": true
+				}
+			},
+			"carModel": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "/model/carDilogFields.json"
+			},
+			"settings": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "/model/settings.json"
+			}
+		}
+		},
+		"resources": {		}
+	}

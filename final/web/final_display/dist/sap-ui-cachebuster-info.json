@@ -1,0 +1,21 @@
+{
+  "Component-dbg.js": 1551113834663,
+  "Component-preload.js": 1551113834679,
+  "Component.js": 1551105301153,
+  "controller/Display-dbg.controller.js": 1551113834663,
+  "controller/Display.controller.js": 1551112377100,
+  "css/style-dbg.css": 1551113834663,
+  "css/style.css": 1551113834575,
+  "di.code-validation.core_issues.json": 1551113834470,
+  "i18n/i18n.properties": 1551099707826,
+  "index.html": 1551105283143,
+  "manifest-bundle.zip": 1551113834742,
+  "manifest.json": 1551113834567,
+  "model/carDilogFields.json": 1551008714043,
+  "model/settings.json": 1551017709433,
+  "resources.json": 1551113834710,
+  "view/CarDialogFields.fragment.xml": 1551092871645,
+  "view/CarOptionsDialog.fragment.xml": 1551099810863,
+  "view/Display.view.xml": 1551103005596,
+  "xs-app.json": 1550249831000
+}

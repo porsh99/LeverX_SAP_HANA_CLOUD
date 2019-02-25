@@ -1,0 +1,20 @@
+service namespace "hw3"{
+
+    "hw3::Cars" as "Cars"
+                navigates("Cars_2_Options" as "toOptions")
+            create using "xsjs.car:carCreate.xsjslib::carCreate"
+            update using "xsjs.car:carCreate.xsjslib::carUpdate"
+            delete forbidden;
+
+    "hw3::Options" as "Options"
+                navigates("Options_2_Cars" as "toCars")
+            create using "xsjs.option:optionCreate.xsjslib::optionCreate"
+            update using "xsjs.option:optionCreate.xsjslib::optionUpdate"
+            delete forbidden;
+
+    association "Cars_2_Options" principal "Cars"("crid")
+            multiplicity "1" dependent "Options"("crid") multiplicity "*";
+
+    association "Options_2_Cars" principal "Options"("crid")
+            multiplicity "1" dependent "Cars"("crid") multiplicity "1";
+}
