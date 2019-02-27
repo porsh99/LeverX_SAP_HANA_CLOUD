@@ -1,0 +1,14 @@
+namespace JAVAHWSCP;
+
+using JAVAHWSCP::Person;
+
+entity Car {
+    @Comment: 'Id of Person'
+    key id : Integer64 generated always as identity ( start with 1 increment by 1 );
+    @Comment: 'Car for Person'
+	pId : String(4);
+    @Comment: 'Name'
+    name : String(100);
+
+    toPerson : Association[1] to Person on toPerson.id = pId;
+};
